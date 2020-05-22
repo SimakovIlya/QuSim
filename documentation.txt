@@ -2,18 +2,23 @@ Pauli_basis
     vector_to_Pauli(rho(Qobj)): Qobj
     vector_from_Pauli(rhoP(Qobj)): Qobj
     prepare_from_rhoP_to_rho_square(n): T_matrix(Qobj), mask_to_sq_rho(ndarray)
-    from_rhoP_to_rho_square(rhoP(Qojb), T_matrix(Qobj), mask_to_sq_rho(ndarray)):: Qobj
+    from_rhoP_to_rho_square(rhoP(Qojb), mask_to_sq_rho(ndarray)):: Qobj
     to_Pauli_T_matrix(O(ndarray)): ndarray
 
 gates
     class QCircuit (n - num of qubits):
-        make_gate(self, T, cur, cur1 = -1): Qobj: trasfer matrix (4^n x 4^n)
+        make_gate(self, T(single gate), cur, cur1 = -1): Qobj: trasfer matrix (4^n x 4^n)
 
-    Wait(t, T1, Tf): Qobj
-    Ry_gate(theta): Qobj
-    NOT_gate(): Qobj
-    CZ_gate(): Qobj
-    Hadamard_gate(): Qobj
+    1q gates:
+        Wait(t, T1, Tf): Qobj
+        Ry_gate(theta): Qobj
+        NOT_gate(): Qobj
+        Hadamard_gate(): Qobj
+        S_gate(): Qobj
+        Z_gate(): Qobj
+    2q gates:
+        CZ_gate(): Qobj
+        iSQAP_gate(): Qobj
 
 measure
     Proj0_gate(n, cur, p): Qobj

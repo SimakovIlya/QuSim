@@ -53,22 +53,5 @@ def measure_last_qubit(rhoP, eta = np.array([[1,0,0],[0,0,0]])): # input is rho 
             print('measure_last_qubit P1')
         m = -1
         rhoP = (R_NOT_Proj1_gate_last_qubit * rhoP) / P1
-    '''if random() <= P0:
-        m = 1
-        if P0 == 0:
-            print('measure_last_qubit P0')
-        rhoP = (Proj0_gate_last_qubit * rhoP) / P0
-    else:
-        m = -1
-        if P1 == 0:
-            print('measure_last_qubit P1')
-        rhoP = (R_NOT_Proj1_gate_last_qubit * rhoP) / P1
-    
-    if m == 1:    
-    	if random() <= etaRO_0:
-        	m *= -1
-    elif m == -1:
-    	if random() <= etaRO_1:
-    		m *= -1'''
         
     return(rhoP, m)

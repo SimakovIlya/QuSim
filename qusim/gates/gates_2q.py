@@ -11,3 +11,17 @@ def CZ_gate():
                                     [0, 0, 1, 0],
                                     [0, 0, 0, -1]]))
     return tensor(T).permute(l)
+
+
+
+
+def iSWAP_gate():
+    '''
+    Returns Pauli trasfer matrix of iSWAP gate
+    '''
+    l = [0, 1]
+    T = to_Pauli_T_matrix(np.array([[1, 0, 0, 0],
+                                    [0, 0, 1j, 0],
+                                    [0, 1j, 0, 0],
+                                    [0, 0, 0, 1]]))
+    return tensor(T).permute(l)

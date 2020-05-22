@@ -33,7 +33,7 @@ def plot_ptm(ptm, title = ''):
     
     
     
-def plot_ptm_compare(ptm1, ptm2, dif = 'False', title1 = '', title2 = ''):
+def plot_ptm_compare(ptm1, ptm2, dif = 'False', title1 = '', title2 = '', title3 = ''):
     matrix1 = np.real_if_close(ptm1.full())
     matrix2 = np.real_if_close(ptm2.full())
     figsize_coef = 1
@@ -90,5 +90,5 @@ def plot_ptm_compare(ptm1, ptm2, dif = 'False', title1 = '', title2 = ''):
         f3.yaxis.set_major_locator(ticker.MultipleLocator(1))
         f3.set_xticklabels([''] + label, rotation=45, fontsize=fontsizes)
         f3.set_yticklabels([''] + label, fontsize=fontsizes)
-        f3.set_title(title1, fontsize=np.around(1.3*fontsizes))
+        f3.set_title(title3, fontsize=np.around(1.3*fontsizes))
     plt.show()
