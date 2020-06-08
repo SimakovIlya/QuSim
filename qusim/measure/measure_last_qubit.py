@@ -2,13 +2,9 @@ from projectors import *
 
 
 
-R_NOT = tensor([Qobj(np.identity(4))] * 9 + [NOT_gate()])
-Proj0_gate_last_qubit = Proj0_gate(n = 10, p = 1, cur = 9)
-R_NOT_Proj1_gate_last_qubit = R_NOT * Proj1_gate(n = 10, p = 1, cur = 9)
-
-
-
-
+# R_NOT = tensor([Qobj(np.identity(4))] * 9 + [NOT_gate()])
+# Proj0_gate_last_qubit = Proj0_gate(n = 10, p = 1, cur = 9)
+# R_NOT_Proj1_gate_last_qubit = R_NOT * Proj1_gate(n = 10, p = 1, cur = 9)
 
 def measure_last_qubit(rhoP, eta = np.array([[1,0,0],[0,0,0]])): # input is rho in Pauli basis, return last qubit in |0>
     '''
@@ -24,8 +20,11 @@ def measure_last_qubit(rhoP, eta = np.array([[1,0,0],[0,0,0]])): # input is rho 
     '''
     
     n = int(np.log2(rhoP.shape[0])/2)
-    if (n != 10):
-    	print('measure_last_qubit: rewrite me!')
+    R_NOT = tensor([Qobj(np.identity(4))] * (n-1) + [NOT_gate()])
+    Proj0_gate_last_qubit = Proj0_gate(n = n, p = 1, cur = n-1)
+    R_NOT_Proj1_gate_last_qubit = R_NOT * Proj1_gate(n = n, p = 1, cur = n-1)
+    # if (n != 10):
+    #     print('measure_last_qubit: rewrite me!')
     P0 = (2**(n)*rhoP[3, 0] + 1)/2
     P1 = 1 - P0
     if random() <= P0:

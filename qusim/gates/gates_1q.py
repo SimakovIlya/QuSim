@@ -37,7 +37,7 @@ def S_gate():
     Returns Pauli trasfer matrix of S phase gate
     '''
     return to_Pauli_T_matrix(np.array([[1, 0],
-                                       [0, 1j]]))
+                                       [0, -1j]]))
 
 
 

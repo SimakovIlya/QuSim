@@ -19,7 +19,8 @@ def plot_ptm(ptm, title = ''):
         print('ERROR in size of ptm')
 
     fontsizes = 12
-    cb = f1.imshow(matrix, cmap = 'RdBu',vmax = 1,vmin = -1)
+    cmap_set = 'RdBu'#'bwr'#'RdBu'
+    cb = f1.imshow(matrix, cmap = cmap_set,vmax = 1,vmin = -1)
     fig.colorbar(cb, ax=f1, ticks=[-1, -1/2, 0, 1/2, 1])
 
     f1.xaxis.set_major_locator(ticker.MultipleLocator(1))
@@ -66,7 +67,8 @@ def plot_ptm_compare(ptm1, ptm2, dif = 'False', title1 = '', title2 = '', title3
             print('ERROR in size of ptm')
 
     fontsizes = 12
-    cb = f1.imshow(matrix1, cmap = 'RdBu',vmax = 1,vmin = -1)
+    cmap_set = 'RdBu'#'bwr'#'RdBu'
+    cb = f1.imshow(matrix1, cmap = cmap_set,vmax = 1,vmin = -1)
     fig.colorbar(cb, ax=f1, ticks=[-1, -1/2, 0, 1/2, 1])
     f1.xaxis.set_major_locator(ticker.MultipleLocator(1))
     f1.yaxis.set_major_locator(ticker.MultipleLocator(1))
@@ -74,7 +76,7 @@ def plot_ptm_compare(ptm1, ptm2, dif = 'False', title1 = '', title2 = '', title3
     f1.set_yticklabels([''] + label, fontsize=fontsizes)
     f1.set_title(title1, fontsize=np.around(1.3*fontsizes))
     
-    cb = f2.imshow(matrix2, cmap = 'RdBu',vmax = 1,vmin = -1)
+    cb = f2.imshow(matrix2, cmap = cmap_set,vmax = 1,vmin = -1)
     fig.colorbar(cb, ax=f2, ticks=[-1, -1/2, 0, 1/2, 1])
     f2.xaxis.set_major_locator(ticker.MultipleLocator(1))
     f2.yaxis.set_major_locator(ticker.MultipleLocator(1))
@@ -84,7 +86,7 @@ def plot_ptm_compare(ptm1, ptm2, dif = 'False', title1 = '', title2 = '', title3
     
     if dif == "True":
         m = matrix2-matrix1
-        cb = f3.imshow(m, cmap = 'RdBu',vmax = np.max(np.abs(m)),vmin = -np.max(np.abs(m)))
+        cb = f3.imshow(m, cmap = cmap_set,vmax = np.max(np.abs(m)),vmin = -np.max(np.abs(m)))
         fig.colorbar(cb, ax=f3)
         f3.xaxis.set_major_locator(ticker.MultipleLocator(1))
         f3.yaxis.set_major_locator(ticker.MultipleLocator(1))

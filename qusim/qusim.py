@@ -4,9 +4,10 @@ for i in range(len(sys.path)):
         sys.path.append(sys.path[i] + '/Pauli_basis')
         sys.path.append(sys.path[i] + '/gates')
         sys.path.append(sys.path[i] + '/measure')
+        sys.path.append(sys.path[i] + '/plotting')
 
 
 from import_Pauli_basis import *
 from import_gates import *
 from import_measure import *
-from plotting import *
+from import_plotting import *
