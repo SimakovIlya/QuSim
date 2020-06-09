@@ -15,15 +15,15 @@ def CZ_gate(phi = np.pi):
 
 
 
-def iSWAP_gate():
+def iSWAP_gate(theta = np.pi, eta = 0, theta_error = 0, eta_error = 0, phi_error = 0):
     '''
     Returns Pauli trasfer matrix of iSWAP gate
     '''
     l = [0, 1]
     T = to_Pauli_T_matrix(np.array([[1, 0, 0, 0],
-                                    [0, 0, 1j, 0],
-                                    [0, 1j, 0, 0],
-                                    [0, 0, 0, 1]]))
+                                    [0, np.cos(theta/2)*np.exp(-1j*theta_error**2/8)*np.exp(-1j*phi_error**2/2), 1j*np.exp(1j*eta)*np.exp(-1j*eta_error**2/8)*np.sin(theta/2), 0],
+                                    [0, 1j*np.exp(-1j*eta)*np.exp(-1j*eta_error**2/8)*np.sin(theta/2), np.cos(theta/2)*np.exp(-1j*theta_error**2/8)*np.exp(-1j*phi_error**2/2), 0],
+                                    [0, 0, 0, np.exp(-1j*phi_error**2/8)]]))
     return tensor(T).permute(l)
 
 

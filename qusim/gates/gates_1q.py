@@ -10,14 +10,16 @@ def NOT_gate():
 
 
 
-def Ry_gate(theta):
+def Ry_gate(theta, theta_error = 0):
     '''
     Returns Pauli trasfer matrix of Ry(theta) gate
     '''
-    return Qobj(np.array([[1, 0, 0, 0],
-                          [0, np.cos(theta), 0, np.sin(theta)],
-                          [0, 0, 1, 0],
-                          [0, -np.sin(theta), 0, np.cos(theta)]]))
+    return to_Pauli_T_matrix(np.array([[np.cos(theta/2)*np.exp(-1j*theta_error**2/8), -np.sin(theta/2)],
+                                       [np.sin(theta/2), np.cos(theta/2)*np.exp(-1j*theta_error**2/8)]]))
+    # Qobj(np.array([[1, 0, 0, 0],
+    #                       [0, np.cos(theta)*np.exp(-1j*theta_error**2/8), 0, np.sin(theta)],
+    #                       [0, 0, 1, 0],
+    #                       [0, -np.sin(theta), 0, np.cos(theta)*np.exp(-1j*theta_error**2/8)]]))
 
 
 
