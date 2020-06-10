@@ -1,4 +1,4 @@
-from projectors import *
+from .projectors import *
 from random import *
 
 

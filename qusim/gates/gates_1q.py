@@ -1,4 +1,4 @@
-from import_Pauli_basis import *
+from ..Pauli_basis import *
     
 
 def NOT_gate():

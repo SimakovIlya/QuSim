@@ -1,5 +1,4 @@
-from import_Pauli_basis import *
-
+from ..Pauli_basis import *
 
 class QCircuit:
     def __init__(self, n):
