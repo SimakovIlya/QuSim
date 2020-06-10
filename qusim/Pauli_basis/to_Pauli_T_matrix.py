@@ -1,4 +1,4 @@
-from basis import *
+from .basis import *
 
 
 

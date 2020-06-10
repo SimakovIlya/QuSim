@@ -1,5 +1,5 @@
-from import_Pauli_basis import *
-from import_gates import *
+from ..Pauli_basis import *
+from ..gates import *
 from random import *
 
 

@@ -1,7 +1,4 @@
-from basis import *
-
-
-
+from .basis import *
 
 def from_rho_vec_to_rho_sq(rho_vec, mask_to_sq_rho):
     '''

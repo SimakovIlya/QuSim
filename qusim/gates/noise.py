@@ -1,5 +1,4 @@
-from import_Pauli_basis import *
-
+from ..Pauli_basis import *
 
 
 def R_dep(p_plane, p_axis): # transfer matrix depolarizing in Pauli basis

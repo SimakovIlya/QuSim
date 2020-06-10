@@ -1,5 +1,4 @@
-from import_Pauli_basis import *
-
+from ..Pauli_basis import *
 
 def Wait(t, T1, Tf):
     '''
