@@ -34,12 +34,12 @@ def Hadamard_gate():
 
 
 
-def S_gate():
+def S_gate(sign = 1):
     '''
     Returns Pauli trasfer matrix of S phase gate
     '''
     return to_Pauli_T_matrix(np.array([[1, 0],
-                                       [0, -1j]]))
+                                       [0, sign * 1j]]))
 
 
 
