@@ -1,2 +1,2 @@
 # QuSim
-Density-matrix Quantum Circuit Simulator
+Density-matrix quantum circuit simulator
