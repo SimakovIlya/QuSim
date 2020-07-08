@@ -53,7 +53,7 @@ def add_noise_iSWAP(gate, dtheta = 0, deta = 0):
 
     a = np.exp(-deta**2/2) * np.exp(-dtheta**2/8)
     b = 1/2*(np.exp(-dtheta**2/2) + 1)
-    c = 1/2 + 1/4*(np.exp(-dtheta**/2)) + 1/4*(np.exp(-deta**/2))
+    c = 1/2 + 1/4*(np.exp(-dtheta**2/2)) + 1/4*(np.exp(-deta**2/2))
 
     gate.data[1, 11]  *= a
     gate.data[2, 7]   *= a
