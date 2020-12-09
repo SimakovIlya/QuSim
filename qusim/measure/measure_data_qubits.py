@@ -54,10 +54,10 @@ def measure_all_data_qubits(rhoP, eta = np.array([[1,0,0],[0,0,0]])):
         elif p_out <= eta[mi, 1]:
             if P1 == 0:
                 print('measure_last_qubit P1')
-            m = -1
+            m = 1
             rhoP = (Proj1_gate_for_all_data_qubits_func[i-1] * rhoP) / P1
         elif p_out <= eta[mi, 2]:
-            m = 1
+            m = -1
             if P0 == 0:
                 print('measure_last_qubit P0')
             rhoP = (Proj0_gate_for_all_data_qubits_func[i-1] * rhoP) / P0

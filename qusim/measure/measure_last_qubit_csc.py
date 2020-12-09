@@ -50,10 +50,10 @@ def measure_last_qubit_csc(rhoP_csc, eta = np.array([[1,0,0],[0,0,0]])): # input
     elif p_out <= eta[mi, 1]:
         if P1 == 0:
             print('measure_last_qubit P1')
-        m = -1
+        m = 1
         rhoP_csc = (R_NOT_Proj1_gate_last_qubit_csc[n-1] * rhoP_csc) / P1
     elif p_out <= eta[mi, 2]:
-        m = 1
+        m = -1
         if P0 == 0:
             print('measure_last_qubit P0')
         rhoP_csc = (Proj0_gate_last_qubit_csc[n-1] * rhoP_csc) / P0

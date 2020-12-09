@@ -40,10 +40,10 @@ def measure_last_qubit(rhoP, eta = np.array([[1,0,0],[0,0,0]])): # input is rho 
     elif p_out <= eta[mi, 1]:
         if P1 == 0:
             print('measure_last_qubit P1')
-        m = -1
+        m = 1
         rhoP = (R_NOT_Proj1_gate_last_qubit * rhoP) / P1
     elif p_out <= eta[mi, 2]:
-        m = 1
+        m = -1
         if P0 == 0:
             print('measure_last_qubit P0')
         rhoP = (Proj0_gate_last_qubit * rhoP) / P0
