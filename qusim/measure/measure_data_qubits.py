@@ -20,6 +20,15 @@ Proj1_gate_for_all_data_qubits_func = [Proj1_gate(n = 1, p = 1, cur = 0),
                                        Proj1_gate(n = 7, p = 1, cur = 6),
                                        Proj1_gate(n = 8, p = 1, cur = 7),
                                        Proj1_gate(n = 9, p = 1, cur = 8)]
+R_NOT_gate = [tensor([NOT_gate()]),
+              tensor([Qobj(np.identity(4))] * 1 + [NOT_gate()]),
+              tensor([Qobj(np.identity(4))] * 2 + [NOT_gate()]),
+              tensor([Qobj(np.identity(4))] * 3 + [NOT_gate()]),
+              tensor([Qobj(np.identity(4))] * 4 + [NOT_gate()]),
+              tensor([Qobj(np.identity(4))] * 5 + [NOT_gate()]),
+              tensor([Qobj(np.identity(4))] * 6 + [NOT_gate()]),
+              tensor([Qobj(np.identity(4))] * 7 + [NOT_gate()]),
+              tensor([Qobj(np.identity(4))] * 8 + [NOT_gate()])]
 
 
 
@@ -50,7 +59,9 @@ def measure_all_data_qubits(rhoP, eta = np.array([[1,0,0],[0,0,0]])):
             m = 1
             if P0 == 0:
                 print('measure_last_qubit P0')
-            rhoP = (Proj0_gate_for_all_data_qubits_func[i-1] * rhoP) / P0
+                rhoP = R_NOT_gate[i-1] * ((Proj1_gate_for_all_data_qubits_func[i-1] * rhoP) / P1)
+            else:
+                rhoP = (Proj0_gate_for_all_data_qubits_func[i-1] * rhoP) / P0
         elif p_out <= eta[mi, 1]:
             if P1 == 0:
                 print('measure_last_qubit P1')
@@ -60,7 +71,9 @@ def measure_all_data_qubits(rhoP, eta = np.array([[1,0,0],[0,0,0]])):
             m = -1
             if P0 == 0:
                 print('measure_last_qubit P0')
-            rhoP = (Proj0_gate_for_all_data_qubits_func[i-1] * rhoP) / P0
+                rhoP = R_NOT_gate[i-1] * ((Proj1_gate_for_all_data_qubits_func[i-1] * rhoP) / P1)
+            else:
+                rhoP = (Proj0_gate_for_all_data_qubits_func[i-1] * rhoP) / P0
         else:
             if P1 == 0:
                 print('measure_last_qubit P1')
