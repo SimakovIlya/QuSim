@@ -1,8 +1,8 @@
 Pauli_basis
     vector_to_Pauli(rho(Qobj)): Qobj
     vector_from_Pauli(rhoP(Qobj)): Qobj
-    prepare_from_rhoP_to_rho_square(n): T_matrix(Qobj), mask_to_sq_rho(ndarray)
-    from_rhoP_to_rho_square(rhoP(Qojb), mask_to_sq_rho(ndarray)):: Qobj
+    prepare_from_rho_vec_to_rho_sq(n): T_matrix(Qobj), mask_to_sq_rho(ndarray)
+    from_rho_vec_to_rho_sq(rhoP(Qojb), mask_to_sq_rho(ndarray)):: Qobj
     to_Pauli_T_matrix(O(ndarray)): ndarray
 
 gates

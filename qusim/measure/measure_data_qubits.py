@@ -48,7 +48,7 @@ def measure_all_data_qubits(rhoP, eta = np.array([[1,0,0],[0,0,0]])):
     #     print('func measure_all_data_qubits askes you think again and make 9 data qubits')
     M_data = np.zeros((n))
     for i in range(n, 0, -1):
-        P0 = (2**(i)*rhoP[3, 0] + 1)/2
+        P0 = np.real((2**(i)*rhoP[3, 0] + 1)/2)
         P1 = 1 - P0
         if random() <= P0:
             mi = 0
@@ -58,25 +58,25 @@ def measure_all_data_qubits(rhoP, eta = np.array([[1,0,0],[0,0,0]])):
         if p_out <= eta[mi, 0]:
             m = 1
             if P0 == 0:
-                print('measure_last_qubit P0')
+                print('measure_last_qubit P0 data')
                 rhoP = R_NOT_gate[i-1] * ((Proj1_gate_for_all_data_qubits_func[i-1] * rhoP) / P1)
             else:
                 rhoP = (Proj0_gate_for_all_data_qubits_func[i-1] * rhoP) / P0
         elif p_out <= eta[mi, 1]:
             if P1 == 0:
-                print('measure_last_qubit P1')
+                print('measure_last_qubit P1 data')
             m = 1
             rhoP = (Proj1_gate_for_all_data_qubits_func[i-1] * rhoP) / P1
         elif p_out <= eta[mi, 2]:
             m = -1
             if P0 == 0:
-                print('measure_last_qubit P0')
+                print('measure_last_qubit P0 data')
                 rhoP = R_NOT_gate[i-1] * ((Proj1_gate_for_all_data_qubits_func[i-1] * rhoP) / P1)
             else:
                 rhoP = (Proj0_gate_for_all_data_qubits_func[i-1] * rhoP) / P0
         else:
             if P1 == 0:
-                print('measure_last_qubit P1')
+                print('measure_last_qubit P1 data')
             m = -1
             rhoP = (Proj1_gate_for_all_data_qubits_func[i-1] * rhoP) / P1
         M_data[i - 1] = m
