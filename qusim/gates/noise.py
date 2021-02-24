@@ -47,6 +47,23 @@ def add_noise_Ry(Ry, dtheta = 0):
 
 
 
+def add_noise_Rx(Rx, dtheta = 0):
+    '''
+    PTM Rx(theta) (Qobj):
+    1,      0,      0,     0
+    0,      0,      0,     0
+    0,      0, cos(theta), sin(theta)
+    0,      0, -sin(theta),cos(theta)
+    '''
+    a = np.exp(-dtheta**2/2)
+    Rx.data[2, 2] *= a
+    Rx.data[2, 3] *= a
+    Rx.data[3, 2] *= a
+    Rx.data[3, 3] *= a
+    return(Rx)
+
+
+
 
 
 def add_noise_iSWAP(gate, dtheta = 0, deta = 0):
