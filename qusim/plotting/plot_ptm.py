@@ -94,3 +94,9 @@ def plot_ptm_compare(ptm1, ptm2, dif = 'False', title1 = '', title2 = '', title3
         f3.set_yticklabels([''] + label, fontsize=fontsizes)
         f3.set_title(title3, fontsize=np.around(1.3*fontsizes))
     plt.show()
+
+    if matrix1.shape[0] == 4:
+        d = 2
+    elif matrix1.shape[0] == 16:
+        d = 4
+    print('Fidelity', (np.trace(matrix1@matrix2.T) + d)/(d*(d+1)))
