@@ -12,7 +12,7 @@ def from_rho_sq_to_rhoP(rho_sq, mask_to_sq_rho):
         Qobj: rho-vector in Pauli basis 
     '''
     n = int(np.log2(rho_sq.shape[0]))
-    rho = np.zeros(((4)**n))
+    rho = np.zeros(((4)**n), dtype=complex)
     rho[mask_to_sq_rho] = rho_sq
     rho = Qobj(rho, dims = [[4]*(n), [1]])
     rhoP = tensor([Qobj(T_matrix_inv)] * n) * rho
