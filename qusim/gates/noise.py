@@ -8,6 +8,20 @@ def R_dep(p_plane, p_axis): # transfer matrix depolarizing in Pauli basis
                           [0, 0, 0, 1 - p_plane]])))
 
 
+
+def R_depolarization(p): # transfer matrix depolarizing in Pauli basis: (1-p)rho + p*I/2
+    I = to_Pauli_T_matrix(np.sqrt(1-3*p/4)*np.array([[1, 0],
+                                                    [0, 1]]))
+    X = to_Pauli_T_matrix(np.sqrt(p/4)*np.array([[0, 1],
+                                                 [1, 0]]))
+    Y = to_Pauli_T_matrix(np.sqrt(p/4)*np.array([[0, -1j],
+                                                 [1j, 0]]))
+    Z = to_Pauli_T_matrix(np.sqrt(p/4)*np.array([[1, 0],
+                                                 [0, -1]]))
+    return(Qobj(I+X+Y+Z))
+
+
+
 def R_dephasing_2qubits_mse(phi): # transfer dephasing matrix for 2 qubits in Pauli basis with mean sq. phase error
     a = np.exp(-phi**2/2)
     A = Qobj(np.identity(4))

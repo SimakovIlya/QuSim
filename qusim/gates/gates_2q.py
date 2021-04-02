@@ -38,3 +38,17 @@ def CNOT_gate():
                                     [0, 0, 0, 1],
                                     [0, 0, 1, 0]]))
     return tensor(T).permute(l)
+
+
+
+
+def fSim_gate(theta, phi):
+    '''
+    Returns Pauli trasfer matrix of fSim gate
+    '''
+    l = [0, 1]
+    T = to_Pauli_T_matrix(np.array([[1, 0, 0, 0],
+                                    [0, np.cos(theta), -1j*np.sin(theta), 0],
+                                    [0, -1j*np.sin(theta), np.cos(theta), 0],
+                                    [0, 0, 0, np.exp(-1j*phi)]]))
+    return tensor(T).permute(l)

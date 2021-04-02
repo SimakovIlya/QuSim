@@ -29,6 +29,16 @@ def Rx_gate(theta):
 
 
 
+def Rz_gate(theta):
+    '''
+    Returns Pauli trasfer matrix of Rx(theta) gate
+    '''
+    return to_Pauli_T_matrix(np.array([[1, 0],
+                                       [0, np.exp(1j*theta)]]))
+
+
+
+
 def Hadamard_gate():
     '''
     Returns Pauli trasfer matrix of Hadamard gate
@@ -54,3 +64,22 @@ def Z_gate():
     '''
     return to_Pauli_T_matrix(np.array([[1, 0],
                                        [0, -1]]))
+
+
+
+def X_gate():
+    '''
+    Returns Pauli trasfer matrix of X gate
+    '''
+    return to_Pauli_T_matrix(np.array([[0, 1],
+                                       [1, 0]]))
+
+
+
+
+def Y_gate():
+    '''
+    Returns Pauli trasfer matrix of Y gate
+    '''
+    return to_Pauli_T_matrix(np.array([[0, -1j],
+                                       [1j, 0]]))
