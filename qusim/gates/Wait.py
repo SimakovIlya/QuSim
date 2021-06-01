@@ -28,7 +28,7 @@ def RT1(t, T1): # transfer matrix amplitude damping in Pauli basis
 
 
 def RTf(t, Tf): # transfer matrix phase damping in Pauli basis
-    p = 1 - np.exp(-t/Tf)
+    p = 1 - np.exp(-2*t/Tf)
     return(np.array([[1, 0, 0, 0],
                      [0, np.sqrt(1 - p), 0, 0],
                      [0, 0, np.sqrt(1 - p), 0],
