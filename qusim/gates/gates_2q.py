@@ -1,5 +1,16 @@
 from ..Pauli_basis import *
 
+def TwoQubit_gate(U):
+    '''
+    Returns trasfer matrix of U gate
+    '''
+    l = [0, 1]
+    T = to_Pauli_T_matrix(np.asarray(U))
+    return tensor(T).permute(l)
+
+    
+
+
 def CZ_gate(phi = np.pi):
     '''
     Returns trasfer matrix of Ry gate

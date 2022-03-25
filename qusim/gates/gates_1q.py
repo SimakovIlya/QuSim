@@ -1,6 +1,15 @@
 from ..Pauli_basis import *
     
 
+def SingleQubit_gate(U):
+    '''
+    Returns trasfer matrix of U gate
+    '''
+    return to_Pauli_T_matrix(np.asarray(U))
+
+
+
+
 def NOT_gate():
     '''
     Returns Pauli trasfer matrix of NOT gate

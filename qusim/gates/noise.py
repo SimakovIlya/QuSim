@@ -21,6 +21,57 @@ def R_depolarization(p): # transfer matrix depolarizing in Pauli basis: (1-p)rho
     return(Qobj(I+X+Y+Z))
 
 
+def R_depolarization_Pauli_equal(p): # transfer matrix depolarizing in Pauli basis: (1-p)I + p/3*X + p/3*Y + p/3*Z
+    I = to_Pauli_T_matrix((1-p)*np.array([[1, 0],
+                                                    [0, 1]]))
+    X = to_Pauli_T_matrix(p/3*np.array([[0, 1],
+                                                 [1, 0]]))
+    Y = to_Pauli_T_matrix(p/3*np.array([[0, -1j],
+                                                 [1j, 0]]))
+    Z = to_Pauli_T_matrix(p/3*np.array([[1, 0],
+                                                 [0, -1]]))
+    return(Qobj(I+X+Y+Z))
+
+def R_depolarization_Pauli(p): # transfer matrix depolarizing in Pauli basis: 
+    # (1-p)I + p/15*IX + p/15*IY +...+ p/15*ZZ
+    I = np.array([[1,0],[0,1]], dtype = complex)
+    X = np.array([[0,1],[1,0]], dtype = complex)
+    Y = np.array([[0,-1j],[1j, 0]], dtype = complex)
+    Z = np.array([[1,0],[0,-1]], dtype = complex)
+    l = [0, 1]
+
+    II = (1-p)*tensor(to_Pauli_T_matrix(np.kron(I,I))).permute(l)
+    IX = p/15*tensor(to_Pauli_T_matrix(np.kron(I,X))).permute(l)
+    IY = p/15*tensor(to_Pauli_T_matrix(np.kron(I,Y))).permute(l)
+    IZ = p/15*tensor(to_Pauli_T_matrix(np.kron(I,Z))).permute(l)
+    XI = p/15*tensor(to_Pauli_T_matrix(np.kron(X,I))).permute(l)
+    XX = p/15*tensor(to_Pauli_T_matrix(np.kron(X,X))).permute(l)
+    XY = p/15*tensor(to_Pauli_T_matrix(np.kron(X,Y))).permute(l)
+    XZ = p/15*tensor(to_Pauli_T_matrix(np.kron(X,Z))).permute(l)
+    YI = p/15*tensor(to_Pauli_T_matrix(np.kron(Y,I))).permute(l)
+    YX = p/15*tensor(to_Pauli_T_matrix(np.kron(Y,X))).permute(l)
+    YY = p/15*tensor(to_Pauli_T_matrix(np.kron(Y,Y))).permute(l)
+    YZ = p/15*tensor(to_Pauli_T_matrix(np.kron(Y,Z))).permute(l)
+    ZI = p/15*tensor(to_Pauli_T_matrix(np.kron(Z,I))).permute(l)
+    ZX = p/15*tensor(to_Pauli_T_matrix(np.kron(Z,X))).permute(l)
+    ZY = p/15*tensor(to_Pauli_T_matrix(np.kron(Z,Y))).permute(l)
+    ZZ = p/15*tensor(to_Pauli_T_matrix(np.kron(Z,Z))).permute(l)
+
+    return(Qobj(II+IX+IY+IZ+XI+XX+XY+XZ+YI+YX+YY+YZ+ZI+ZX+ZY+ZZ))
+
+
+def R2_depolarization_Pauli_equal(p): # transfer matrix depolarizing in Pauli basis: (1-p)I + p/3*X + p/3*Y + p/3*Z
+    I = to_Pauli_T_matrix((1-p)*np.array([[1, 0],
+                                                    [0, 1]]))
+    X = to_Pauli_T_matrix(p/3*np.array([[0, 1],
+                                                 [1, 0]]))
+    Y = to_Pauli_T_matrix(p/3*np.array([[0, -1j],
+                                                 [1j, 0]]))
+    Z = to_Pauli_T_matrix(p/3*np.array([[1, 0],
+                                                 [0, -1]]))
+    return(Qobj(I+X+Y+Z))
+
+
 
 def R_dephasing_2qubits_mse(phi): # transfer dephasing matrix for 2 qubits in Pauli basis with mean sq. phase error
     a = np.exp(-phi**2/2)
