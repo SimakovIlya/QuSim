@@ -32,7 +32,19 @@ def R_depolarization_Pauli_equal(p): # transfer matrix depolarizing in Pauli bas
                                                  [0, -1]]))
     return(Qobj(I+X+Y+Z))
 
-def R_depolarization_Pauli(p): # transfer matrix depolarizing in Pauli basis: 
+def R_depolarization_Pauli(px, py, pz): # transfer matrix depolarizing in Pauli basis: 
+    # (1-px-py-pz)I + px*X + py*Y + pz*Z
+    I = to_Pauli_T_matrix((1-px-py-pz)*np.array([[1, 0],
+                                                    [0, 1]]))
+    X = to_Pauli_T_matrix(px/15*np.array([[0, 1],
+                                                 [1, 0]]))
+    Y = to_Pauli_T_matrix(py/15*np.array([[0, -1j],
+                                                 [1j, 0]]))
+    Z = to_Pauli_T_matrix(pz/15*np.array([[1, 0],
+                                                 [0, -1]]))
+    return(Qobj(I+X+Y+Z))
+
+def R2_depolarization_Pauli(p): # transfer matrix depolarizing in Pauli basis: 
     # (1-p)I + p/15*IX + p/15*IY +...+ p/15*ZZ
     I = np.array([[1,0],[0,1]], dtype = complex)
     X = np.array([[0,1],[1,0]], dtype = complex)
@@ -58,18 +70,6 @@ def R_depolarization_Pauli(p): # transfer matrix depolarizing in Pauli basis:
     ZZ = p/15*tensor(to_Pauli_T_matrix(np.kron(Z,Z))).permute(l)
 
     return(Qobj(II+IX+IY+IZ+XI+XX+XY+XZ+YI+YX+YY+YZ+ZI+ZX+ZY+ZZ))
-
-
-def R2_depolarization_Pauli_equal(p): # transfer matrix depolarizing in Pauli basis: (1-p)I + p/3*X + p/3*Y + p/3*Z
-    I = to_Pauli_T_matrix((1-p)*np.array([[1, 0],
-                                                    [0, 1]]))
-    X = to_Pauli_T_matrix(p/3*np.array([[0, 1],
-                                                 [1, 0]]))
-    Y = to_Pauli_T_matrix(p/3*np.array([[0, -1j],
-                                                 [1j, 0]]))
-    Z = to_Pauli_T_matrix(p/3*np.array([[1, 0],
-                                                 [0, -1]]))
-    return(Qobj(I+X+Y+Z))
 
 
 
