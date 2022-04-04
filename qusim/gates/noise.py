@@ -22,25 +22,25 @@ def R_depolarization(p): # transfer matrix depolarizing in Pauli basis: (1-p)rho
 
 
 def R_depolarization_Pauli_equal(p): # transfer matrix depolarizing in Pauli basis: (1-p)I + p/3*X + p/3*Y + p/3*Z
-    I = to_Pauli_T_matrix((1-p)*np.array([[1, 0],
+    I = to_Pauli_T_matrix(np.sqrt(1-p)*np.array([[1, 0],
                                                     [0, 1]]))
-    X = to_Pauli_T_matrix(p/3*np.array([[0, 1],
+    X = to_Pauli_T_matrix(np.sqrt(p/3)*np.array([[0, 1],
                                                  [1, 0]]))
-    Y = to_Pauli_T_matrix(p/3*np.array([[0, -1j],
+    Y = to_Pauli_T_matrix(np.sqrt(p/3)*np.array([[0, -1j],
                                                  [1j, 0]]))
-    Z = to_Pauli_T_matrix(p/3*np.array([[1, 0],
+    Z = to_Pauli_T_matrix(np.sqrt(p/3)*np.array([[1, 0],
                                                  [0, -1]]))
     return(Qobj(I+X+Y+Z))
 
 def R_depolarization_Pauli(px, py, pz): # transfer matrix depolarizing in Pauli basis: 
     # (1-px-py-pz)I + px*X + py*Y + pz*Z
-    I = to_Pauli_T_matrix((1-px-py-pz)*np.array([[1, 0],
+    I = to_Pauli_T_matrix(np.sqrt(1-px-py-pz)*np.array([[1, 0],
                                                     [0, 1]]))
-    X = to_Pauli_T_matrix(px/15*np.array([[0, 1],
+    X = to_Pauli_T_matrix(np.sqrt(px/15)*np.array([[0, 1],
                                                  [1, 0]]))
-    Y = to_Pauli_T_matrix(py/15*np.array([[0, -1j],
+    Y = to_Pauli_T_matrix(np.sqrt(py/15)*np.array([[0, -1j],
                                                  [1j, 0]]))
-    Z = to_Pauli_T_matrix(pz/15*np.array([[1, 0],
+    Z = to_Pauli_T_matrix(np.sqrt(pz/15)*np.array([[1, 0],
                                                  [0, -1]]))
     return(Qobj(I+X+Y+Z))
 
@@ -52,22 +52,22 @@ def R2_depolarization_Pauli(p): # transfer matrix depolarizing in Pauli basis:
     Z = np.array([[1,0],[0,-1]], dtype = complex)
     l = [0, 1]
 
-    II = (1-p)*tensor(to_Pauli_T_matrix(np.kron(I,I))).permute(l)
-    IX = p/15*tensor(to_Pauli_T_matrix(np.kron(I,X))).permute(l)
-    IY = p/15*tensor(to_Pauli_T_matrix(np.kron(I,Y))).permute(l)
-    IZ = p/15*tensor(to_Pauli_T_matrix(np.kron(I,Z))).permute(l)
-    XI = p/15*tensor(to_Pauli_T_matrix(np.kron(X,I))).permute(l)
-    XX = p/15*tensor(to_Pauli_T_matrix(np.kron(X,X))).permute(l)
-    XY = p/15*tensor(to_Pauli_T_matrix(np.kron(X,Y))).permute(l)
-    XZ = p/15*tensor(to_Pauli_T_matrix(np.kron(X,Z))).permute(l)
-    YI = p/15*tensor(to_Pauli_T_matrix(np.kron(Y,I))).permute(l)
-    YX = p/15*tensor(to_Pauli_T_matrix(np.kron(Y,X))).permute(l)
-    YY = p/15*tensor(to_Pauli_T_matrix(np.kron(Y,Y))).permute(l)
-    YZ = p/15*tensor(to_Pauli_T_matrix(np.kron(Y,Z))).permute(l)
-    ZI = p/15*tensor(to_Pauli_T_matrix(np.kron(Z,I))).permute(l)
-    ZX = p/15*tensor(to_Pauli_T_matrix(np.kron(Z,X))).permute(l)
-    ZY = p/15*tensor(to_Pauli_T_matrix(np.kron(Z,Y))).permute(l)
-    ZZ = p/15*tensor(to_Pauli_T_matrix(np.kron(Z,Z))).permute(l)
+    II = np.sqrt(1-p)*tensor(to_Pauli_T_matrix(np.kron(I,I))).permute(l)
+    IX = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(I,X))).permute(l)
+    IY = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(I,Y))).permute(l)
+    IZ = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(I,Z))).permute(l)
+    XI = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(X,I))).permute(l)
+    XX = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(X,X))).permute(l)
+    XY = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(X,Y))).permute(l)
+    XZ = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(X,Z))).permute(l)
+    YI = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(Y,I))).permute(l)
+    YX = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(Y,X))).permute(l)
+    YY = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(Y,Y))).permute(l)
+    YZ = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(Y,Z))).permute(l)
+    ZI = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(Z,I))).permute(l)
+    ZX = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(Z,X))).permute(l)
+    ZY = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(Z,Y))).permute(l)
+    ZZ = np.sqrt(p/15)*tensor(to_Pauli_T_matrix(np.kron(Z,Z))).permute(l)
 
     return(Qobj(II+IX+IY+IZ+XI+XX+XY+XZ+YI+YX+YY+YZ+ZI+ZX+ZY+ZZ))
 
