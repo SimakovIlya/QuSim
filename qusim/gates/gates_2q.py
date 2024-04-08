@@ -8,6 +8,13 @@ def TwoQubit_gate(U):
     T = to_Pauli_T_matrix(np.asarray(U))
     return tensor(T).permute(l)
 
+
+def MultiQubit_gate(U):
+    '''
+    Returns trasfer matrix of U gate
+    '''
+    return TwoQubit_gate(U)
+
     
 
 
