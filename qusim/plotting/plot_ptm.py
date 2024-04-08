@@ -41,37 +41,54 @@ def plot_ptm_compare(ptm1, ptm2, dif = 'False', title1 = '', title2 = '', title3
     if dif == "True":
         figsize_coef = 1.5
         if matrix1.shape[0] == 4:
-            label = ['I','X','Y','Z']
+            label = ['I', 'X', 'Y', 'Z']
             fig, (f1, f2, f3) = plt.subplots(
-                nrows = 1, ncols = 3,
-                figsize=(12*figsize_coef, 4))
+                nrows=1, ncols=3,
+                figsize=(12 * figsize_coef, 4))
         elif matrix1.shape[0] == 16:
-            label = ['II','IX','IY','IZ','XI','XX','XY','XZ','YI','YX','YY','YZ','ZI','ZX','ZY','ZZ']
+            label = ['II', 'IX', 'IY', 'IZ', 'XI', 'XX', 'XY', 'XZ', 'YI', 'YX', 'YY', 'YZ', 'ZI', 'ZX', 'ZY', 'ZZ']
             fig, (f1, f2, f3) = plt.subplots(
-                nrows = 1, ncols = 3,
-                figsize=(14*figsize_coef, 5))
+                nrows=1, ncols=3,
+                figsize=(14 * figsize_coef, 5))
+        elif matrix1.shape[0] == 64:
+            label = ['III', 'IIX', 'IIY', 'IIZ', 'IXI', 'IXX', 'IXY', 'IXZ', 'IYI', 'IYX', 'IYY', 'IYZ', 'IZI', 'IZX',
+                     'IZY', 'IZZ',
+                     'XII', 'XIX', 'XIY', 'XIZ', 'XXI', 'XXX', 'XXY', 'XXZ', 'XYI', 'XYX', 'XYY', 'XYZ', 'XZI', 'XZX',
+                     'XZY', 'XZZ',
+                     'YII', 'YIX', 'YIY', 'YIZ', 'YXI', 'YXX', 'YXY', 'YXZ', 'YYI', 'YYX', 'YYY', 'YYZ', 'YZI', 'YZX',
+                     'YZY', 'YZZ',
+                     'ZII', 'ZIX', 'ZIY', 'ZIZ', 'ZXI', 'ZXX', 'ZXY', 'ZXZ', 'ZYI', 'ZYX', 'ZYY', 'ZYZ', 'ZZI', 'ZZX',
+                     'ZZY', 'ZZZ',
+                     ]
+            fig, (f1, f2, f3) = plt.subplots(
+                nrows=1, ncols=3,
+                figsize=(18 * figsize_coef, 6))
         else:
             print('ERROR in size of ptm')
     else:
         if matrix1.shape[0] == 4:
-            label = ['I','X','Y','Z']
+            label = ['I', 'X', 'Y', 'Z']
             fig, (f1, f2) = plt.subplots(
-                nrows = 1, ncols = 2,
-                figsize=(12*figsize_coef, 4))
+                nrows=1, ncols=2,
+                figsize=(12 * figsize_coef, 4))
         elif matrix1.shape[0] == 16:
-            label = ['II','IX','IY','IZ','XI','XX','XY','XZ','YI','YX','YY','YZ','ZI','ZX','ZY','ZZ']
-            fig, (f1, f2) = plt.subplots(
-                nrows = 1, ncols = 2,
-                figsize=(14*figsize_coef, 5))
-        elif matrix1.shape[0] == 64:
-            label = ['III', 'IIX', 'IIY', 'IIZ', 'IXI', 'IXX', 'IXY', 'IXZ', 'IYI', 'IYX', 'IYY', 'IYZ', 'IZI', 'IZX', 'IZY', 'IZZ',
-                     'XII', 'XIX', 'XIY', 'XIZ', 'XXI', 'XXX', 'XXY', 'XXZ', 'XYI', 'XYX', 'XYY', 'XYZ', 'XZI', 'XZX', 'XZY', 'XZZ',
-                     'YII', 'YIX', 'YIY', 'YIZ', 'YXI', 'YXX', 'YXY', 'YXZ', 'YYI', 'YYX', 'YYY', 'YYZ', 'YZI', 'YZX', 'YZY', 'YZZ',
-                     'ZII', 'ZIX', 'ZIY', 'ZIZ', 'ZXI', 'ZXX', 'ZXY', 'ZXZ', 'ZYI', 'ZYX', 'ZYY', 'ZYZ', 'ZZI', 'ZZX', 'ZZY', 'ZZZ',
-                     ]
+            label = ['II', 'IX', 'IY', 'IZ', 'XI', 'XX', 'XY', 'XZ', 'YI', 'YX', 'YY', 'YZ', 'ZI', 'ZX', 'ZY', 'ZZ']
             fig, (f1, f2) = plt.subplots(
                 nrows=1, ncols=2,
                 figsize=(14 * figsize_coef, 5))
+        elif matrix1.shape[0] == 64:
+            label = ['III', 'IIX', 'IIY', 'IIZ', 'IXI', 'IXX', 'IXY', 'IXZ', 'IYI', 'IYX', 'IYY', 'IYZ', 'IZI', 'IZX',
+                     'IZY', 'IZZ',
+                     'XII', 'XIX', 'XIY', 'XIZ', 'XXI', 'XXX', 'XXY', 'XXZ', 'XYI', 'XYX', 'XYY', 'XYZ', 'XZI', 'XZX',
+                     'XZY', 'XZZ',
+                     'YII', 'YIX', 'YIY', 'YIZ', 'YXI', 'YXX', 'YXY', 'YXZ', 'YYI', 'YYX', 'YYY', 'YYZ', 'YZI', 'YZX',
+                     'YZY', 'YZZ',
+                     'ZII', 'ZIX', 'ZIY', 'ZIZ', 'ZXI', 'ZXX', 'ZXY', 'ZXZ', 'ZYI', 'ZYX', 'ZYY', 'ZYZ', 'ZZI', 'ZZX',
+                     'ZZY', 'ZZZ',
+                     ]
+            fig, (f1, f2) = plt.subplots(
+                nrows=1, ncols=2,
+                figsize=(18 * figsize_coef, 6))
         else:
             print('ERROR in size of ptm')
 
