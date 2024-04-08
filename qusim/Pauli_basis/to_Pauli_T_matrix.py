@@ -12,12 +12,12 @@ def to_Pauli_T_matrix(O):
         ndarray: Pauli transfer matrix (4^n x 4^n)
     '''
     if (O.shape[0] == 2):
-        T = np.identity(4, dtype=complex)
+        T = Qobj(np.eye(4))
         for i in range(0, 4):
             for j in range(0, 4):
                 T[i, j] = 1 / 2 * np.trace(sigma[i] @ O @ sigma[j] @ np.conj(O.T))
     elif (O.shape[0] == 4):
-        T = np.identity(16, dtype=complex)
+        T = tensor(Qobj(np.eye(4)), Qobj(np.eye(4)))
         sigma2d = np.empty((16, 4, 4), complex)
         for i in range(0, 4):
             for j in range(0, 4):
@@ -26,7 +26,7 @@ def to_Pauli_T_matrix(O):
             for j in range(0, 16):
                 T[i, j] = 1 / 4 * np.trace(sigma2d[i, :, :] @ O @ sigma2d[j, :, :] @ np.transpose(O.conj()))
     elif (O.shape[0] == 8):
-        T = np.identity(64, dtype=complex)
+        T = tensor(Qobj(np.eye(4)), Qobj(np.eye(4)), Qobj(np.eye(4)))
         sigma3d = np.empty((4 ** 3, 8, 8), complex)
         for i in range(4):
             for j in range(4):
@@ -36,7 +36,7 @@ def to_Pauli_T_matrix(O):
             for j in range(0, 64):
                 T[i, j] = 1 / 8 * np.trace(sigma3d[i, :, :] @ O @ sigma3d[j, :, :] @ np.transpose(O.conj()))
     elif (O.shape[0] == 16):
-        T = np.identity(256, dtype=complex)
+        T = tensor(Qobj(np.eye(4)), Qobj(np.eye(4)), Qobj(np.eye(4)), Qobj(np.eye(4)))
         sigma4d = np.empty((4 ** 4, 16, 16), complex)
         for i in range(4):
             for j in range(4):
@@ -47,4 +47,4 @@ def to_Pauli_T_matrix(O):
         for i in range(0, 256):
             for j in range(0, 256):
                 T[i, j] = 1 / 16 * np.trace(sigma4d[i, :, :] @ O @ sigma4d[j, :, :] @ np.transpose(O.conj()))
-    return np.real(T)
+    return T
