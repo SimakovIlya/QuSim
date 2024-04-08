@@ -133,7 +133,7 @@ def R3_depolarization(p): # transfer matrix depolarizing in Pauli basis:
     #             YII+YIX+YIY+YIZ+YXI+YXX+YXY+YXZ+YYI+YYX+YYY+YYZ+YZI+YZX+YZY+YZZ+
     #             ZII+ZIX+ZIY+ZIZ+ZXI+ZXX+ZXY+ZXZ+ZYI+ZYX+ZYY+ZYZ+ZZI+ZZX+ZZY+ZZZ))
     R = tensor(to_Pauli_T_matrix(np.kron(I, np.kron(I, I)))).permute(l)
-    for i in range(1,s R.shape[0]):
+    for i in range(1, R.shape[0]):
         R.data[i,i] = 1-p
     return R
 
